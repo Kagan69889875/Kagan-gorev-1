@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://dtay2e3k0ktvf"]
+
+[ext_resource type="Script" uid="uid://8nendsu824lu" path="res://Assets/Scripts/character_select.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dj2e3c70wjbjj" path="res://Assets/Sprites/Characters/Dino animasyon.png" id="2_dino"]
+[ext_resource type="Texture2D" uid="uid://df2d83l5781sj" path="res://Assets/Sprites/Characters/Mumya animasyon.png" id="3_mumya"]
+[ext_resource type="Texture2D" uid="uid://c6xc7xwlflfn0" path="res://Assets/Sprites/Characters/stegosaurus animasyon.png" id="4_stego"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dino0"]
+atlas = ExtResource("2_dino")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mumya0"]
+atlas = ExtResource("3_mumya")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stego0"]
+atlas = ExtResource("4_stego")
+region = Rect2(0, 0, 128, 128)
+
+[node name="CharacterSelect" type="Control" unique_id=1205679719]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1547008672]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18, 0.12, 0.08, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2059333252]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainVBox" type="VBoxContainer" parent="CenterContainer" unique_id=316645082]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="CenterContainer/MainVBox" unique_id=1261141995]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 52
+text = "DINO RUN FRC"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="CenterContainer/MainVBox" unique_id=1051138346]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.8, 0.6, 1)
+theme_override_font_sizes/font_size = 24
+text = "Karakterini Sec"
+horizontal_alignment = 1
+
+[node name="CharactersHBox" type="HBoxContainer" parent="CenterContainer/MainVBox" unique_id=957172851]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="DinoBox" type="VBoxContainer" parent="CenterContainer/MainVBox/CharactersHBox" unique_id=2005094112]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="DinoPreview" type="TextureRect" parent="CenterContainer/MainVBox/CharactersHBox/DinoBox" unique_id=1133232549]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("AtlasTexture_dino0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DinoName" type="Label" parent="CenterContainer/MainVBox/CharactersHBox/DinoBox" unique_id=1369628654]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "Dino"
+horizontal_alignment = 1
+
+[node name="DinoBtn" type="Button" parent="CenterContainer/MainVBox/CharactersHBox/DinoBox" unique_id=2098883522]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "SEC"
+
+[node name="MumyaBox" type="VBoxContainer" parent="CenterContainer/MainVBox/CharactersHBox" unique_id=477969931]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MumyaPreview" type="TextureRect" parent="CenterContainer/MainVBox/CharactersHBox/MumyaBox" unique_id=278533597]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("AtlasTexture_mumya0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MumyaName" type="Label" parent="CenterContainer/MainVBox/CharactersHBox/MumyaBox" unique_id=1812430174]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "Mumya"
+horizontal_alignment = 1
+
+[node name="MumyaBtn" type="Button" parent="CenterContainer/MainVBox/CharactersHBox/MumyaBox" unique_id=549186484]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "SEC"
+
+[node name="StegoBox" type="VBoxContainer" parent="CenterContainer/MainVBox/CharactersHBox" unique_id=850404478]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StegoPreview" type="TextureRect" parent="CenterContainer/MainVBox/CharactersHBox/StegoBox" unique_id=1670984611]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("AtlasTexture_stego0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StegoName" type="Label" parent="CenterContainer/MainVBox/CharactersHBox/StegoBox" unique_id=759464873]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "Stegosaurus"
+horizontal_alignment = 1
+
+[node name="StegoBtn" type="Button" parent="CenterContainer/MainVBox/CharactersHBox/StegoBox" unique_id=2103012209]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "SEC"
+
+[node name="SelectionLabel" type="Label" parent="CenterContainer/MainVBox" unique_id=1756635105]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 1, 0.4, 1)
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+
+[node name="StartBtn" type="Button" parent="CenterContainer/MainVBox" unique_id=2110690810]
+custom_minimum_size = Vector2(220, 55)
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "BASLA"
+
+[connection signal="pressed" from="CenterContainer/MainVBox/StartBtn" to="." method="_on_start_btn_pressed"]
