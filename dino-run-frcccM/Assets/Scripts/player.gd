@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
-# Eğer karakterin 4'ten fazla frame'i varsa burayı değiştir (4, 5 veya 6)
-const FRAME_COUNT: int = 4
 const JUMP_FORCE: float = -650.0
 const GRAVITY: float = 1800.0
+
+const FRAME_W: int = 128
+const FRAME_H: int = 128
 
 var _dead: bool = false
 
@@ -26,27 +27,34 @@ func _setup_animation():
 	if not texture:
 		return
 
-	var fw: int = int(texture.get_width() / FRAME_COUNT)
-	var fh: int = texture.get_height()
 	var sf = SpriteFrames.new()
 
-	# Koşma animasyonu
+	# Koşma — frame 0 ve 1
 	sf.add_animation("run")
-	sf.set_animation_speed("run", 10.0)
+	sf.set_animation_speed("run", 6.0)
 	sf.set_animation_loop("run", true)
-	for i in range(FRAME_COUNT):
+	for i in range(2):
 		var a = AtlasTexture.new()
 		a.atlas = texture
-		a.region = Rect2(i * fw, 0, fw, fh)
+		a.region = Rect2(i * FRAME_W, 0, FRAME_W, FRAME_H)
 		sf.add_frame("run", a)
 
-	# Zıplama animasyonu (son frame)
+	# Düşme — frame 2
+	sf.add_animation("fall")
+	sf.set_animation_speed("fall", 1.0)
+	sf.set_animation_loop("fall", false)
+	var fa = AtlasTexture.new()
+	fa.atlas = texture
+	fa.region = Rect2(2 * FRAME_W, 0, FRAME_W, FRAME_H)
+	sf.add_frame("fall", fa)
+
+	# Zıplama — frame 3
 	sf.add_animation("jump")
 	sf.set_animation_speed("jump", 1.0)
 	sf.set_animation_loop("jump", false)
 	var ja = AtlasTexture.new()
 	ja.atlas = texture
-	ja.region = Rect2((FRAME_COUNT - 1) * fw, 0, fw, fh)
+	ja.region = Rect2(3 * FRAME_W, 0, FRAME_W, FRAME_H)
 	sf.add_frame("jump", ja)
 
 	$Sprite.sprite_frames = sf
@@ -57,13 +65,25 @@ func _physics_process(delta: float):
 		return
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
+		if velocity.y < 0:
+			if $Sprite.animation != "jump":
+				$Sprite.play("jump")
+		else:
+			if $Sprite.animation != "fall":
+				$Sprite.play("fall")
 	else:
-		if $Sprite.animation == "jump":
+		if $Sprite.animation != "run":
 			$Sprite.play("run")
-	if (Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_up")) and is_on_floor():
+	if (Input.is_action_just_pressed("ui_accept") or \
+		Input.is_action_just_pressed("ui_up")) and is_on_floor():
 		velocity.y = JUMP_FORCE
-		$Sprite.play("jump")
 	move_and_slide()
+
+func _input(event):
+	if event is InputEventScreenTouch and event.pressed:
+		if is_on_floor() and not _dead:
+			velocity.y = JUMP_FORCE
+			$Sprite.play("jump")
 
 func die():
 	_dead = true

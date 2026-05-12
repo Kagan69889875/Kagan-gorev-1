@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://c1ptnonka67dh"]
+
+[ext_resource type="Script" uid="uid://cwyjeh61i5poq" path="res://Assets/Scripts/game_manager.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://n3hii6u8oxlx" path="res://Assets/Scripts/player.gd" id="2_mwu4u"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mwu4u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mwu4u"]
+radius = 18.0
+height = 55.0
+
+[node name="Game" type="Node2D" unique_id=231368965]
+script = ExtResource("1_script")
+
+[node name="Backgrounds" type="Node2D" parent="." unique_id=1365127983]
+
+[node name="BG1" type="Sprite2D" parent="Backgrounds" unique_id=1713146592]
+
+[node name="BG2" type="Sprite2D" parent="Backgrounds" unique_id=689155707]
+
+[node name="Spawner" type="Node2D" parent="." unique_id=1876583951]
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=703779138]
+position = Vector2(0, 430)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=621834595]
+shape = SubResource("WorldBoundaryShape2D_mwu4u")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1244991056]
+z_index = 1
+position = Vector2(200, 430)
+slide_on_ceiling = false
+script = ExtResource("2_mwu4u")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=1200647564]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1755765746]
+shape = SubResource("CapsuleShape2D_mwu4u")
+
+[node name="HUD" type="CanvasLayer" parent="Player/CollisionShape2D" unique_id=13491915]
+
+[node name="DistanceLabel" type="Label" parent="Player/CollisionShape2D/HUD" unique_id=228573118]
+offset_left = 900.0
+offset_top = 20.0
+offset_right = 940.0
+offset_bottom = 43.0
+
+[node name="ScoreLabel" type="Label" parent="Player/CollisionShape2D/HUD" unique_id=133906963]
+offset_left = 900.0
+offset_top = 50.0
+offset_right = 940.0
+offset_bottom = 73.0
+
+[node name="GameOverPanel" type="Control" parent="Player/CollisionShape2D/HUD" unique_id=1436599293]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -44.0
+offset_right = -46.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="Player/CollisionShape2D/HUD/GameOverPanel" unique_id=1376648124]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 48
+text = "GAME OVER"
+
+[node name="RestartBtn" type="Button" parent="Player/CollisionShape2D/HUD/GameOverPanel" unique_id=1240379]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 0
+offset_top = 80.0
+offset_right = 75.0
+offset_bottom = 130.0
+text = "RESTART"

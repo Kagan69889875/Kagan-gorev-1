@@ -51,14 +51,14 @@ theme_override_constants/separation = 20
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
 theme_override_font_sizes/font_size = 52
-text = "DINO RUN FRC"
+text = "DINO RUN"
 horizontal_alignment = 1
 
 [node name="Subtitle" type="Label" parent="CenterContainer/MainVBox" unique_id=1051138346]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.8, 0.6, 1)
 theme_override_font_sizes/font_size = 24
-text = "Karakterini Sec"
+text = "Select your character"
 horizontal_alignment = 1
 
 [node name="CharactersHBox" type="HBoxContainer" parent="CenterContainer/MainVBox" unique_id=957172851]
@@ -88,7 +88,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "SEC"
+text = "SELECT"
 
 [node name="MumyaBox" type="VBoxContainer" parent="CenterContainer/MainVBox/CharactersHBox" unique_id=477969931]
 layout_mode = 2
@@ -105,14 +105,14 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
-text = "Mumya"
+text = "Mummy"
 horizontal_alignment = 1
 
 [node name="MumyaBtn" type="Button" parent="CenterContainer/MainVBox/CharactersHBox/MumyaBox" unique_id=549186484]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "SEC"
+text = "SELECT"
 
 [node name="StegoBox" type="VBoxContainer" parent="CenterContainer/MainVBox/CharactersHBox" unique_id=850404478]
 layout_mode = 2
@@ -136,7 +136,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "SEC"
+text = "SELECT"
 
 [node name="SelectionLabel" type="Label" parent="CenterContainer/MainVBox" unique_id=1756635105]
 layout_mode = 2
@@ -149,6 +149,6 @@ custom_minimum_size = Vector2(220, 55)
 layout_mode = 2
 size_flags_horizontal = 4
 disabled = true
-text = "BASLA"
+text = "START"
 
 [connection signal="pressed" from="CenterContainer/MainVBox/StartBtn" to="." method="_on_start_btn_pressed"]
